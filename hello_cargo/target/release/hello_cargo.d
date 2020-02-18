@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/hello_cargo/target/release/hello_cargo: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/hello_cargo/src/main.rs
