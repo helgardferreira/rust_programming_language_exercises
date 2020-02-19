@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/variables/target/debug/variables: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/variables/src/main.rs
