@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/data_types/target/debug/data_types: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/data_types/src/main.rs
