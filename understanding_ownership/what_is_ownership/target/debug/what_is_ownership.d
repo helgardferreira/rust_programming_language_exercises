@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/understanding_ownership/what_is_ownership/target/debug/what_is_ownership: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/understanding_ownership/what_is_ownership/src/main.rs
