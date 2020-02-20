@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/understanding_ownership/references_and_borrowing/target/debug/references_and_borrowing: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/understanding_ownership/references_and_borrowing/src/main.rs
