@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/using_structs/structs_basics/target/debug/structs_basics: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/using_structs/structs_basics/src/main.rs
