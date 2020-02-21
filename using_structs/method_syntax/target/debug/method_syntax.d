@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/using_structs/method_syntax/target/debug/method_syntax: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/using_structs/method_syntax/src/main.rs
