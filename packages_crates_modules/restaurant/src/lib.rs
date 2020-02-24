@@ -1,18 +1,4 @@
-mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waiting_list() {}
-
-        fn seat_at_table() {}
-    }
-
-    pub mod serving {
-        fn take_order() {}
-
-        pub fn serve_order() {}
-
-        fn take_payment() {}
-    }
-}
+mod front_of_house;
 
 // module tree for the above structure
 /*
