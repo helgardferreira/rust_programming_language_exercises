@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/packages_crates_modules/restaurant/target/debug/librestaurant.rlib: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/packages_crates_modules/restaurant/src/lib.rs
