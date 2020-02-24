@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/enums_pattern_matching/match_operator/target/debug/match_operator: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/enums_pattern_matching/match_operator/src/main.rs
