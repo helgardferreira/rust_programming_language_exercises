@@ -27,6 +27,18 @@ crate
          └── take_payment
 */
 
+// making use of the use keyword
+// use crate::front_of_house::hosting;
+
+// using relative path with use keyword
+// use front_of_house::hosting;
+
+// re-exporting item
+// If we hadn't specified pub use, the eat_at_restaurant function could call
+// hosting::add_to_waiting_list in its scope, but external code couldn't
+// take advantage of this new path.
+pub use crate::front_of_house::hosting;
+
 mod back_of_house {
     // you choose which fields of a struct to make public - one at a time
     pub struct Breakfast {
@@ -58,6 +70,20 @@ mod back_of_house {
     fn cook_order() {}
 }
 
+// idiomatic way to bring the standard library’s HashMap struct
+// into the scope of a binary crate
+use std::collections::HashMap;
+
+// using nested paths
+use std::{cmp::Ordering, io};
+
+// using external packages
+// bringing Rng trait into scope
+use rand::Rng;
+
+// the glob operator
+// use std::collections::*;
+
 pub fn eat_at_restaurant() {
     // Absolute path
     // crate::front_of_house::hosting::add_to_waiting_list();
@@ -80,4 +106,15 @@ pub fn eat_at_restaurant() {
     let order2 = back_of_house::Appetizer::Salad;
     println!("{:?}", order1);
     println!("{:?}", order2);
+
+    // no longer need to specify lengthy path if using use keyword
+    hosting::add_to_waiting_list();
+
+    let mut map = HashMap::new();
+    map.insert(1, 2);
+
+    // using external packages
+    // using thread_rng function on rand
+    let secret_number = rand::thread_rng();
+    println!("{:?}", secret_number);
 }
