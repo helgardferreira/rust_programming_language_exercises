@@ -1,0 +1,1 @@
+/home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/common_collections/utf8_encoded_strings/target/debug/utf8_encoded_strings: /home/helgardf/Documents/Programming/rust/rust_programming_language_exercises/common_collections/utf8_encoded_strings/src/main.rs
