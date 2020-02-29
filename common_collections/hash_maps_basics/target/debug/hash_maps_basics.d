@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\common_collections\hash_maps_basics\target\debug\hash_maps_basics.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\common_collections\hash_maps_basics\src\main.rs
