@@ -217,3 +217,32 @@ fn chained_short_read_username_from_file() -> Result<String, io::Error> {
 fn super_short_read_username_from_file() -> Result<String, io::Error> {
     fs::read_to_string("hello.txt")
 }
+
+// creating custom types for validation
+pub struct Guess {
+    value: i32,
+}
+
+impl Guess {
+    pub fn new(value: i32) -> Guess {
+        if value < 1 || value > 100 {
+            panic!("Guess value must be between 1 and 100, got {}.", value);
+        }
+
+        Guess {
+            value
+        }
+    }
+
+    // getter is necessary since properties in structs are private by default
+    /*
+    It’s important that the value field be private so code using the Guess
+    struct is not allowed to set value directly: code outside the module must
+    use the Guess::new function to create an instance of Guess, thereby ensuring
+    there’s no way for a Guess to have a value that hasn't been checked by the
+    conditions in the Guess::new function.
+    */
+    pub fn value(&self) -> i32 {
+        self.value
+    }
+}
