@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\generics_traits_lifetimes\generic_data_types\target\debug\generic_data_types.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\generics_traits_lifetimes\generic_data_types\src\main.rs
