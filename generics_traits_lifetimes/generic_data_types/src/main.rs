@@ -99,6 +99,16 @@ fn main() {
     let p5 = p3.mix_up(p4);
 
     println!("p5.x = {}, p5.y = {}", p5.x, p5.y);
+
+    let number_list = vec![34, 50, 25, 100, 65];
+
+    let result = largest(&number_list);
+    println!("The largest number is {}", result);
+
+    let char_list = vec!['y', 'm', 'a', 'q'];
+
+    let result = largest(&char_list);
+    println!("The largest char is {}", result);
 }
 
 // function to find largest signed 32-bit integer in a slice
@@ -148,3 +158,48 @@ fn largest<T>(list: &[T]) -> T {
     largest
 }
 */
+
+// fixing the largest function with trait bounds
+/*
+First we modify the signature of largest to be bound to PartialOrd. But then we
+get the following error:
+
+error[E0508]: cannot move out of type `[T]`, a non-copy slice
+   --> src\main.rs:154:23
+    |
+154 |     let mut largest = list[0];
+    |                       ^^^^^^^
+    |                       |
+    |                       cannot move out of here
+    |                       move occurs because `list[_]` has type `T`, which does not implement the `Copy` trait
+    |                       help: consider borrowing here: `&list[0]`
+
+error[E0507]: cannot move out of a shared reference
+   --> src\main.rs:156:18
+    |
+156 |     for &item in list.iter() {
+    |         -----    ^^^^^^^^^^^
+    |         ||
+    |         |data moved here
+    |         |move occurs because `item` has type `T`, which does not implement the `Copy` trait
+    |         help: consider removing the `&`: `item`
+
+When we made the largest function generic, it became possible for the list
+parameter to have types in it that don't implement the Copy trait. Consequently,
+we wouldn't be able to move the value out of list[0] and into the largest
+variable, resulting in this error.
+
+To call this code with only those types that implement the Copy trait,
+we can add Copy to the trait bounds of T!
+*/
+fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+    let mut largest = list[0];
+
+    for &item in list.iter() {
+        if item > largest {
+            largest = item;
+        }
+    }
+
+    largest
+}

@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\generics_traits_lifetimes\traits\target\debug\traits.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\generics_traits_lifetimes\traits\src\main.rs
