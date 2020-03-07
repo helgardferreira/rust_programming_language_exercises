@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\automated_tests\adder\target\debug\adder-4445f7488388e379.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\automated_tests\adder\src\lib.rs C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\automated_tests\adder\src\tests.rs
