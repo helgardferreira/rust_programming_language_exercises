@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\automated_tests\test_organization\target\debug\test_organization-16a474ccde6b2b61.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\automated_tests\test_organization\src\lib.rs
