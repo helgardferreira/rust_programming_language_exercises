@@ -44,14 +44,37 @@ since the compiler can't implicitly determine if our lifetimes are elided
 in this context.
 */
 impl Config<'_> {
-    pub fn new(args: &[String]) -> Result<Config, &'static str> {
+    pub fn new(args: &[String]) -> Result<Config, String> {
         // return the Err variant of the Result enum and pass it a string literal
         if args.len() < 3 {
-            return Err("Not enough arguments provided!");
+            return Err(String::from("Not enough arguments provided!"));
         }
 
         let query = &args[1];
-        let filename = &args[2];
+
+        let argument_string = if args.len() > 3 {
+            if !args[2].contains("-") {
+                return Err(String::from("Invalid argument list format."));
+            };
+            args[2].split_at(1).1
+        } else {
+            ""
+        };
+
+        let filename = if args.len() > 3 {
+            &args[3]
+        } else {
+            &args[2]
+        };
+
+        let mut case_sensitive: Option<bool> = None;
+
+        for argument in argument_string.chars() {
+            match argument {
+                'i' => case_sensitive = Some(false),
+                _ => return Err(format!("Invalid argument: {}", argument))
+            }
+        }
 
         /*
         is_err is a method on Result that returns a boolean that is either true
@@ -64,7 +87,11 @@ impl Config<'_> {
         Please note, in this case we don't care for the value of the environment
         variable - all we care for is whether it is set or not.
         */
-        let case_sensitive = env::var("CASE_INSENSITIVE").is_err();
+        let case_sensitive = if let Some(_) = case_sensitive {
+            case_sensitive.unwrap()
+        } else {
+            env::var("CASE_INSENSITIVE").is_err()
+        };
 
         Ok(Config { query, filename, case_sensitive })
     }
