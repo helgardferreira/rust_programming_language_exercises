@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\functional_rust\iterators\target\debug\iterators.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\functional_rust\iterators\src\main.rs
