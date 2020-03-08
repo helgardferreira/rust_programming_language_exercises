@@ -1,11 +1,13 @@
 use std::fs;
 use std::error::Error;
+use std::env;
 
 // be wary to not fall victim to 'primitive obsession'!
 // making use of lifetime specifiers here since we're making use of references
 pub struct Config<'a> {
     pub query: &'a str,
     pub filename: &'a str,
+    pub case_sensitive: bool,
 }
 
 // we will rather opt to change the below function into a 'new' method for Config
@@ -51,7 +53,20 @@ impl Config<'_> {
         let query = &args[1];
         let filename = &args[2];
 
-        Ok(Config { query, filename })
+        /*
+        is_err is a method on Result that returns a boolean that is either true
+        (if the value is the Err() variant) or false (if the value is the Ok()
+        variant).
+
+        Therefore, if not CASE_INSENSITIVE (i.e. the result is an error) then make a
+        case sensitive search.
+
+        Please note, in this case we don't care for the value of the environment
+        variable - all we care for is whether it is set or not.
+        */
+        let case_sensitive = env::var("CASE_INSENSITIVE").is_err();
+
+        Ok(Config { query, filename, case_sensitive })
     }
 }
 
@@ -68,7 +83,13 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     */
     let contents = fs::read_to_string(config.filename)?;
 
-    for line in search(config.query, &contents) {
+    let results = if config.case_sensitive {
+        search(config.query, &contents)
+    } else {
+        search_case_insensitive(config.query, &contents)
+    };
+
+    for line in results {
         println!("{}", line);
     }
 
@@ -78,17 +99,41 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
 
 
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-    let mut result: Vec<&str> = Vec::new();
+    let mut results: Vec<&str> = Vec::new();
     // iterate through each line of the contents
     for line in contents.lines() {
         // check whether the line contains our query string
         if line.contains(query) {
-            // store line in result vector
-            result.push(line);
+            // store line in results vector
+            results.push(line);
         }
     }
 
-    result
+    results
+}
+
+pub fn search_case_insensitive<'a>(
+    query: &str, contents: &'a str,
+) -> Vec<&'a str> {
+    let query = query.to_lowercase();
+    let mut results: Vec<&str> = Vec::new();
+    // iterate through each line of the contents
+    /*
+    We can't make use contents.to_lowercase() or contents.to_ascii_lowercase()
+    since the values in the results vector will then reference data that is
+    owned by the current function instead of data that is owned by the parameter
+    (since both .to_lowercase() and .to_ascii_lowercase() return a String and
+    not a &str).
+    */
+    for line in contents.lines() {
+        // check whether the line contains our query string
+        if line.to_lowercase().contains(&query) {
+            // store line in the results vector
+            results.push(line);
+        }
+    }
+
+    results
 }
 
 #[cfg(test)]
@@ -101,7 +146,8 @@ mod tests {
         let contents = "\
 Rust:
 Safe, fast, productive.
-Pick three.";
+Pick three.
+Duct tape.";
 
         /*
         Takes a query and the text for the query and returns the lines from
@@ -111,5 +157,20 @@ Pick three.";
             vec!["Safe, fast, productive."],
             search(query, contents)
         )
+    }
+
+    #[test]
+    fn case_insensitive() {
+        let query = "rUsT";
+        let contents = "\
+Rust:
+safe, fast, productive.
+Pick three.
+Trust me.";
+
+        assert_eq!(
+            vec!["Rust:", "Trust me."],
+            search_case_insensitive(query, contents)
+        );
     }
 }
