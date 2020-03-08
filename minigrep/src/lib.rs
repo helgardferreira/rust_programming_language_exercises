@@ -68,8 +68,48 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     */
     let contents = fs::read_to_string(config.filename)?;
 
-    println!("With text:\n\n{}", contents);
+    for line in search(config.query, &contents) {
+        println!("{}", line);
+    }
 
     // if the function succeeds we (implicitly) return the Ok variant of Result
     Ok(())
+}
+
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    let mut result: Vec<&str> = Vec::new();
+    // iterate through each line of the contents
+    for line in contents.lines() {
+        // check whether the line contains our query string
+        if line.contains(query) {
+            // store line in result vector
+            result.push(line);
+        }
+    }
+
+    result
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn one_result() {
+        let query = "duct";
+        let contents = "\
+Rust:
+Safe, fast, productive.
+Pick three.";
+
+        /*
+        Takes a query and the text for the query and returns the lines from
+        the text that contain the query.
+        */
+        assert_eq!(
+            vec!["Safe, fast, productive."],
+            search(query, contents)
+        )
+    }
 }

@@ -13,9 +13,6 @@ fn main() {
         process::exit(1);
     });
 
-    println!("Searching for {}", config.query);
-    println!("In file {}", config.filename);
-
     // handling errors returned from run in main
     /*
     We use if let here instead of unwrap_or_else since we don't care about
