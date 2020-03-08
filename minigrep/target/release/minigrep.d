@@ -1,1 +1,1 @@
-C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\minigrep\target\release\minigrep.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\minigrep\src\main.rs
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\minigrep\target\release\minigrep.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\minigrep\src\lib.rs C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\minigrep\src\main.rs

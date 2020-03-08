@@ -4,9 +4,9 @@ use std::env;
 
 // be wary to not fall victim to 'primitive obsession'!
 // making use of lifetime specifiers here since we're making use of references
-pub struct Config<'a> {
-    pub query: &'a str,
-    pub filename: &'a str,
+pub struct Config {
+    pub query: String,
+    pub filename: String,
     pub case_sensitive: bool,
 }
 
@@ -43,16 +43,39 @@ mark that our lifetime is elided with the anonymous lifetime specifier `<'_>`,
 since the compiler can't implicitly determine if our lifetimes are elided
 in this context.
 */
-impl Config<'_> {
-    pub fn new(args: &[String]) -> Result<Config, String> {
-        // return the Err variant of the Result enum and pass it a string literal
-        if args.len() < 3 {
-            return Err(String::from("Not enough arguments provided!"));
+impl Config {
+    pub fn new(mut args: env::Args) -> Result<Config, String> {
+        // skip the first value of the Args iterator (the binary name and path)
+        args.next();
+
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err(String::from("Didn't get a query string.")),
+        };
+
+        let argument_string;
+        let filename;
+
+        match args.next() {
+            Some(arg) => {
+                if arg.contains("-") {
+                    argument_string = arg;
+                    filename = if let Some(val) = args.next() {
+                        val
+                    } else {
+                        return Err(String::from("Didn't get a file name."));
+                    }
+                } else {
+                    argument_string = String::from("");
+                    filename = arg;
+                }
+            }
+            None => return Err(String::from(
+                "Didn't get a file name or argument list."
+            ))
         }
 
-        let query = &args[1];
-
-        let argument_string = if args.len() > 3 {
+        /*let argument_string = if args.len() > 3 {
             if !args[2].contains("-") {
                 return Err(String::from("Invalid argument list format."));
             };
@@ -65,11 +88,11 @@ impl Config<'_> {
             &args[3]
         } else {
             &args[2]
-        };
+        };*/
 
         let mut case_sensitive: Option<bool> = None;
 
-        for argument in argument_string.chars() {
+        for argument in argument_string.chars().skip(1) {
             match argument {
                 'i' => case_sensitive = Some(false),
                 _ => return Err(format!("Invalid argument: {}", argument))
@@ -111,9 +134,9 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.filename)?;
 
     let results = if config.case_sensitive {
-        search(config.query, &contents)
+        search(&config.query, &contents)
     } else {
-        search_case_insensitive(config.query, &contents)
+        search_case_insensitive(&config.query, &contents)
     };
 
     for line in results {
@@ -126,7 +149,12 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
 
 
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-    let mut results: Vec<&str> = Vec::new();
+    // making code clearer with Iterator adaptors
+    contents.lines()
+        .filter(|line| line.contains(query))
+        .collect()
+
+    /*let mut results: Vec<&str> = Vec::new();
     // iterate through each line of the contents
     for line in contents.lines() {
         // check whether the line contains our query string
@@ -136,7 +164,7 @@ pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
         }
     }
 
-    results
+    results*/
 }
 
 pub fn search_case_insensitive<'a>(
