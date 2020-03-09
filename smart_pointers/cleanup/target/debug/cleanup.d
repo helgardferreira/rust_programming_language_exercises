@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\smart_pointers\cleanup\target\debug\cleanup.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\smart_pointers\cleanup\src\main.rs
