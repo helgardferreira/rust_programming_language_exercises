@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\add\target\debug\libadd_one.rlib: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\add\add-one\src\lib.rs
