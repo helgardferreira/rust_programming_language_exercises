@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\smart_pointers\deref_trait\target\debug\deref_trait.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\smart_pointers\deref_trait\src\main.rs
