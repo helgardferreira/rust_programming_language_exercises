@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\cargo_crates\my_crate\target\debug\my_crate-5125a7b13aeeeffd.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\cargo_crates\my_crate\src\lib.rs
