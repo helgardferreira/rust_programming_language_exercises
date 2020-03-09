@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\cargo_crates\my_art\target\debug\libmy_art.rlib: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\cargo_crates\my_art\src\lib.rs
