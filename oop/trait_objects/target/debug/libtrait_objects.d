@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\oop\trait_objects\target\debug\libtrait_objects.rlib: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\oop\trait_objects\src\lib.rs
