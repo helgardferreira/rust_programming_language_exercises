@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\oop\oop_characteristics\target\debug\liboop_characteristics.rlib: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\oop\oop_characteristics\src\lib.rs
