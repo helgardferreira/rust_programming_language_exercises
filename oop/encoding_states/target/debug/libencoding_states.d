@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\oop\encoding_states\target\debug\libencoding_states.rlib: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\oop\encoding_states\src\lib.rs
