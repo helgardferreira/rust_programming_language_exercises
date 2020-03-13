@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\oop\implementing_oop\target\debug\libimplementing_oop.rlib: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\oop\implementing_oop\src\lib.rs
