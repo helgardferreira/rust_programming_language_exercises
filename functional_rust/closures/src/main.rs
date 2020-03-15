@@ -103,8 +103,6 @@ fn generate_workout(intensity: u32, random_number: u32) {
     // refactoring with closures to store code
     // even though it's not necessary to annotate the type of a closure, you can:
     // let expensive_closure = |num: u32| -> u32 {
-    // OR
-    // let expensive_closure: fn(u32) -> u32 = |num| {
     /*let expensive_closure = |num| {
         println!("calculating slowly...");
         thread::sleep(Duration::from_secs(2));

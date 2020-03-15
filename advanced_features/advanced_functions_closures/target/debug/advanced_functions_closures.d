@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\advanced_features\advanced_functions_closures\target\debug\advanced_functions_closures.exe: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\advanced_features\advanced_functions_closures\src\main.rs
