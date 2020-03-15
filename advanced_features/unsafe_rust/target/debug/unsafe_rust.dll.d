@@ -1,0 +1,1 @@
+C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\advanced_features\unsafe_rust\target\debug\unsafe_rust.dll.lib: C:\Users\Helgard\Documents\Programming\rust\rust_programming_language_exercises\advanced_features\unsafe_rust\src\main.rs
